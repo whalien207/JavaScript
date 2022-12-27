@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS 기초(사용법과 출력)</title>
+
+    <!-- 외부 js 링크 (상대 or 절대경로) -->
+    <!-- js링크 순서는 반드시 head에 있는 것은 아니고, 파일의 랜더링 순서에 따라서 달라질 수있다. -->
+
+    <!-- 스크립트의 코드는 반드시 head에서 넣어야 하는 것은 아니다. body 중간 중간 넣어도 된다.
+        링크의 위치에 따라 스크립트가 동작을 할 수 도 있고 안할 수도 있기 때문에....
+        스크립트의 링크를 참조한 위치에서 동작하기 때문에 링크의 순서가 중요하다. (화면이 그려져 있어야 동작하는 경우 화면을 그린 후 스크립트를 동작 시켜야한다.) 
+    -->
+    <script src="./index01.js"></script>
+
+</head>
+<body>
+
+    <!-- 
+        자바 스크립트는 실행한 화면이 아닌 개발자도구(F12)의 콘솔에 결과가 나타난다.
+        
+        * 문법이 틀리면 vscode에서 따로 알려주지 않고 결과가 나오지 않는다.. ㅋㅋㅋㅋ
+        * 정상적으로 동작이 안되는 애들은 개발자 도구에서 대충 위치를 알려준다.
+     -->
+    <script>
+        console.log('hello');
+
+        //데이터 타입의 키워드(var)를 사용하지 않아도 동작한다. 
+        //그래도 변수를 나타내기 위해서 var를 사용하는 것이 알아보기 쉽겠다.
+
+        //동일 변수의 선언이 가능. 단 주의 해야겠다.
+        var a = 10;
+        var a = 20;
+
+        a = 100; //변수의 변경
+
+        console.log(a); //콘솔 출력 - 젤 많이 사용
+        document.write(a);//HTML 화면에 출력 (많이 사용하지는 않는다.)
+        
+        //alert(a); //경고창 - 확인버튼만 나옴
+        //confirm(a); //확인창 - 확인과 취소 버튼이 같이 나온다.
+
+    </script>
+
+
+</body>
+</html>
