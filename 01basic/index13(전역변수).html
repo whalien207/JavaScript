@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>전역변수</title>
+</head>
+<body>
+    
+    <script>
+
+        //var 변수의 유효범위는 함수이다.
+
+        // var 변수 - 전역변수 취급 case 
+        //( function안에서의 var 빼고 전부 다)
+
+        var num1 = 50; //전역변수
+        if(true){
+            var num2 = 100;
+        }
+
+        //if안에서 선언된 num2는 var로 선언되었기 때문에 전역변수 취급. 
+        //따라서 if문 밖에서도 사용이 가능하다.
+        console.log(num2);
+
+        // var 변수 - 지역변수 취급 case
+        var num3 = 100;
+        function add(){
+            var num4 = 200;
+        }
+        //지역변수라서 function밖에서 사용할 수 없다. 에러에러~
+        // console.log(num4);
+
+        //ES6 - let변수, 중괄호 스코프
+
+        let x1 = 100;
+        if(true){
+            let x2 = 200;
+        }
+        console.log(x2);
+
+        let x3 = 100; //전역
+        function add2(){
+            let x4 = 200; //지역
+        }
+        console.log(x4);
+
+    </script>
+
+</body>
+</html>

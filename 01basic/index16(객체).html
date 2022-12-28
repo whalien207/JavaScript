@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>객체</title>
+</head>
+<body>
+    
+    <script>
+        //객체의 표현 {}
+        var person = {name : 'hong', age: 20, info:[1,2,3]};
+        console.log(person);
+
+        //객체에 접근하는 방법이 2가지 있다. (둘다 알아둬야 함)
+        //1번째 방법 : .으로 접근
+        console.log('객체에 접근하는 방법 1번째');
+
+        console.log(person.name);
+        console.log(person.age);
+        console.log(person.info);
+
+        //2번째 방법 : 이름[키] => 키 값을 문자로 주면 된다.
+        console.log('객체에 접근하는 방법 2번째');
+
+        console.log(person['name']);
+        console.log(person['age']);
+        console.log(person['info']);
+
+        //객체 안에 객체
+        console.log('=======================');
+        console.log('객체 안의 객체');
+
+        var exam = {kor: 10, eng: 20};
+        var kim = {name: '김길동', exam: exam};
+
+        //다양하게 표현 가능
+        console.log(kim.exam.kor);
+        console.log(kim.exam['kor']);
+        console.log(kim['exam']['kor']);
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>배열을 조작하는 다양한 함수</title>
+</head>
+<body>
+    
+    <script>
+        //배열을 조작하는 다양한 함수
+        //MDN을 보면 좋다. (엄청나게 많고 아는만큼 사용할 수 있다.)
+
+        var arr = [1,2,3,4,5];
+
+        //배열 마지막에 추가 push()
+        console.log('push');
+        arr.push(6);
+        console.log(arr);
+
+        //배열 마지막 요소 제거 pop()
+        console.log('pop');
+        arr.pop();
+        console.log(arr);
+
+        //배열 앞쪽에 추가 unshift()
+        console.log('unshift');
+
+        arr.unshift(10,11);
+        console.log(arr);
+
+        //배열안의 배열 추가
+        arr.unshift([-1, 0]);
+        console.log(arr);
+
+        //배열 앞쪽부터 요소 제거 shift()
+        console.log('shift');
+
+        arr.shift();
+        console.log(arr);
+
+        
+        //배열의 중간의 추가 삭제 splice(시작점, 삭제할 갯수, 넣을 값)
+        console.log('splice');
+        arr.splice(2, 1);
+        console.log(arr);
+
+        arr.splice(2, 1, 'a');
+        console.log(arr);
+
+        arr.splice(2, 0, 'b');//삭제 없이 추가만
+        console.log(arr);
+
+        //배열 정렬 -> 사전 등재 순 sort
+        console.log('sort');
+        arr.sort();
+        console.log(arr);
+
+        //배열 뒤집기
+        console.log('reverse');
+        arr.reverse();
+        console.log(arr);
+
+        //배열의 탐색 indexof
+        console.log('indexof');
+        console.log(arr.indexOf('a')); //발견된 위치:1
+        console.log(arr.indexOf('a', 2)); //발견된 위치:-1 (2번째 인덱스부터 a를 탐색)
+
+        if(arr.indexOf('a') != -1){
+            console.log('원하는 문자를 찾을 때 if문에 indexof로 조건을 주어서 처리해 줄 수 있다.');
+        }
+
+        //배열을 합치는 concat *중요*
+        console.log('concat');
+
+        var arr2 = ['가', '나', '다'];
+        var newArr = arr.concat(arr2);
+
+        console.log(newArr);
+
+    </script>
+
+</body>
+</html>

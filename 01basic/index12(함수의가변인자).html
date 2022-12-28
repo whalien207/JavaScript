@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>함수의 가변의 인자</title>
+</head>
+<body>
+    
+    <script>
+
+        function func1(x,y){
+            //arguments키워드를 이용해서 매개변수를 찾아서 사용할 수 있다. 
+            //(개념을 알아두자 사용할일은 그리 많지는 않음.)
+            console.log(arguments);
+            console.log('매개변수의 길이:' + arguments.length);
+
+            console.log('----------');
+            console.log(arguments[0]);
+            console.log(arguments[1]);
+            console.log(arguments[2]);
+            console.log('----------');
+
+
+            return x+y;
+        }
+
+        //매개변수 자체는 큰 의미를 가지는 것은 아니다. 갯수를 지키지 않아도 에러가 발생하지는 않는다.
+        //단순히 사용할 값에 이름을 붙이는 형태이다.
+        console.log(func1(1));
+        console.log(func1(1,2));
+        console.log(func1(1,2,3,4,5,6,7));
+    </script>
+
+</body>
+</html>

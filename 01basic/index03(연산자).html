@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>연산자</title>
+</head>
+<body>
+    
+    <script>
+        var num1 = "10";
+        var num2 = 10;
+
+        // 값만 같다면 true
+        console.log(num1 == num2); //true
+        console.log(num1 != num2); //false
+
+        // 데이터 타입도 비교
+        console.log(num1 === num2); //false - 데이터 타입이 다르므로
+        console.log(num1 !== num2); //true
+
+        var a; //undefined
+        var b = null; //null
+
+        console.log(a, b, "==비교",a==b); //변수값을 동시에 출력하기 위해서는 , 로 구분한다.
+        console.log(a, b, a != b);
+
+        console.log(a, b, "===비교",a===b);
+
+    </script>
+
+</body>
+</html>

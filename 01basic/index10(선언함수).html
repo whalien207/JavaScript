@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>선언함수</title>
+</head>
+<body>
+    
+    <script>
+
+        // 호이스팅 (선언적 함수에서 가능) - 선 호출 후 함수생성
+        func1(); 
+
+        //함수의 return 값 받기
+        // var result = func2();
+
+        console.log(func2());
+        console.log(func3(1,2,3));
+
+        function func1(){
+            console.log('func 실행');
+        }
+
+        function func2(){
+            console.log('func2 실행');
+            return 'func2 반환';
+        }
+
+        //함수의 매개변수에는 var 키워드는 쓰지 않고 이름만 적어 주면 된다.
+        function func3(a, b, c){
+            console.log('func3 실행');
+            return a + b + c;
+        }
+
+        //함수를 변수에 저장할 수 있다. * JS의 특징 *
+        console.log('== 함수를 변수에 저장 ==');
+        var a = func1;
+        
+        console.log('a의 타입: ' + typeof a);
+        console.log('a의 실행결과:');
+        a();
+
+    </script>
+
+</body>
+</html>
