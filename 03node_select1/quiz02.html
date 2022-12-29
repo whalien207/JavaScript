@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>실습2</title>
+</head>
+<body>
+
+    <p>(select에서 value 속성은 선택된 값을 의미한다</p>
+    <p>change이벤트</p>
+
+    <h5 class="msg">단어를 선택하세요</h5>
+     
+    <select id="lang">
+        <option value="">선택</option> 
+        <option value="영어">hello</option>
+        <option value="한글">안녕</option>
+        <option value="중국어">你好</option>
+    </select>
+
+    <script>
+        var lang = document.getElementById("lang");
+        var msg = document.querySelector(".msg");
+
+        lang.onchange = function(){
+            if(lang.value == ""){
+                msg.innerHTML = "단어를 선택하세요";
+            }else{
+                msg.innerHTML = lang.value + "입니다.";
+            }
+        }   
+
+                // function chageLangSelect(){
+        //     var value = lang.options[lang.selectedIndex].value;
+
+        //     var msg = document.querySelector(".msg");
+        //     if(value == ""){
+        //         msg.innerHTML = "단어를 선택하세요";
+        //     }else{
+        //         msg.innerHTML = value + "입니다.";
+        //     }
+        // }
+
+        
+    </script>
+    
+</body>
+</html>

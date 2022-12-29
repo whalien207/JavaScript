@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>실습1</title>
+</head>
+<body>
+
+    <select id="select">
+        <option>1</option>
+        <option>2</option>
+        <option>3</option>
+    </select>
+
+    <!-- input 인라인 이벤트 활용 -->
+    <input type="text" id="input">
+
+    <div id="div">
+        더블클릭 이벤트
+    </div>
+
+    <script>
+        //위에 있는 select 와 input에 여러분이 원하는 방법으로 change 걸어보기
+
+        // select 표준이벤트로 활용
+        var select = document.getElementById("select");
+        select.addEventListener('mouseover', colorchange);
+        select.addEventListener('mouseout', colorchange_w);
+
+        var input = document.getElementById("input");
+        input.addEventListener('mouseover', colorchange2);
+        input.addEventListener('mouseout', colorchange2_w);
+
+        function colorchange(){
+            select.style.backgroundColor = "lightblue";
+        }
+
+        function colorchange_w(){
+            select.style.backgroundColor = "white";
+        }
+
+        function colorchange2(){
+            input.style.backgroundColor = "lightblue";
+        }
+
+        function colorchange2_w(){
+            input.style.backgroundColor = "white";
+        }
+
+        // div 기본이벤트로 활용
+        var db = document.getElementById("div");
+        db.ondblclick = function(){console.log('더블클릭')};
+
+    </script>
+    
+</body>
+</html>

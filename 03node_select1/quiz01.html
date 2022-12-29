@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>실습1</title>
+</head>
+<body>
+
+    <h4>사용자가 버튼을 클릭하면 input태그의 공백여부, 체크박스의 체크 여부</h4>
+    
+    아이디: <input type="input" id="id">
+    기억하기: <input type="checkbox" class="remember" id="remember">
+
+    <button id="btn">확인</button>
+    <script>
+        var btn = document.getElementById("btn");
+        var id = document.getElementById("id");
+        var remember = document.querySelector(".remember");
+
+
+        btn.onclick = function(){
+            var space = id.value.replace(/\s/g, "");
+            if(space == ""){
+                console.log('id가 공백');
+            }
+
+            if(!remember.checked){
+                console.log('체크박스 체크 안됨');
+            }
+
+        }
+
+    </script>
+
+    <hr>
+
+    <h4>인라인이벤트 사용 - 사용자가 체크 박스를 클릭할 때마다 경고창에 value값을 띄워주세요.</h4>
+    <input type="checkbox" value="1" onclick="check(this);">조항1
+    <input type="checkbox" value="2" onclick="check(this);">조항2
+    <input type="checkbox" value="3" onclick="check(this);">조항3
+
+    <script>
+        function check(tag){
+            alert(tag.value + "조항을 선택");
+        }
+    </script>
+
+    
+
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSON 형변환</title>
+</head>
+<body>
+
+    <script>
+        //[]배열 안에 {}객체를 넣은 모형
+        var data = [
+            {id: 'aaa123', title: 'aaa', content: 'a...'},
+            {id: 'bbb123', title: 'bbb', content: 'b...'},
+            {id: 'ccc123', title: 'ccc', content: 'c...'}
+        ]; 
+
+        console.log(typeof data);
+        console.log(data); // 서버와의 통신이 이렇게 보내면 인식이 안된다.
+
+        // JS객체를 JSON문자열로 형변환
+        console.log('--------json stringify로 변환한 결과(JS객체->JSON문자열)---------');
+        var str = JSON.stringify(data);
+        console.log(str);
+
+        //JSON문자열을 JS객체로 형변환
+        console.log('--------json parse로 변환한 결과(JSON문자열->JS객체)---------');
+        var obj = JSON.parse(str);
+        console.log(obj);
+
+        //단, 문자열을 객체로 변경할 때는 엄격한 규칙이 있다.
+        //1. key value값을 ""로 묶고 {}를 ''로 묶어줘야한다. => '{"key":"value"}'
+        console.log('--------json parse시 규칙에 대하여---------');
+
+        var obj2 = JSON.parse('{"key":"value"}');
+        console.log(obj2);
+
+    </script>
+    
+</body>
+</html>

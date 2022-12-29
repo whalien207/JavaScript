@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>기본이벤트</title>
+</head>
+<body>
+    
+    <button id="btn">기본이벤트</button>
+
+    <script>
+        var a = document.getElementById("btn");
+        console.log(a); //버튼 그자체
+        
+        a.onclick = function(){
+            console.log('기본이벤트');
+
+            // 자기자신으로 사용할 수 있는 애들...a도 this도 사용가능하다.
+            console.log(this == a); //자기자신
+            console.log(this); //자기자신
+            console.log(a); //자기자신
+        }
+
+
+    </script>
+
+</body>
+</html>

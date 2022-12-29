@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>인라인이벤트</title>
+</head>
+<body>
+    
+    <!-- onclick의 다양한 사용 (onclick안에는 순수한 JS코드가 다 들어갈 수 있다.) -->
+
+    <button onclick="alert('경고');">인라인 이벤트</button>
+
+    <button onclick="var a = 1; 
+                    alert(a);">인라인 이벤트</button>
+
+    <button onclick="function aaa(){
+                        alert(1);
+                    }
+                    aaa();
+    ">인라인 이벤트</button>
+
+    <!-- 위와 같이 사용한다면 가독성이 떨어지므로 아래와 같이 사용하는 것이 좋다. -->
+
+    <button onclick="aaa();">인라인 이벤트 스크립트와 분리</button>
+
+    <!-- onclick안에서의 매개변수 사용 -->
+    <button onclick="bbb(1);">1</button>
+    <button onclick="bbb(2);">2</button>
+    <button onclick="bbb(3);">3</button>
+
+    <!-- 인라인 이벤트 안에서 this를 넘기면 자기 자신 (버튼 자기자신)을 넘긴다고 보면 된다. -->
+    <button onclick="ccc(this);">1</button>
+    <button onclick="ccc(this);">2</button>
+    <button onclick="ccc(this);">3</button>
+
+    <!-- 인라인 이벤트 - 함수의 선언은 script에 하고, 태그에서 연결 -->
+    <script>
+
+        function aaa(){
+            alert("경고");
+        }
+
+        function bbb(a){
+            console.log(a);
+        }
+
+        function ccc(a){
+            a.innerHTML = 'hello';
+        }
+
+    </script>
+
+
+</body>
+</html>

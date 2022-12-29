@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>this keyword</title>
+</head>
+<body>
+
+    <h4>this의 의미</h4>
+
+    <button id="btn">이벤트에서의 this</button>
+
+    <!-- this keyword 헷갈리지 말고 잘 알아둬야 한다. -->
+    <!-- JS의 this는 java this와는 다르다 -->
+    <script>
+        // 함수에서의 this : window라는 최상위 객체
+        // 이벤트에서의 this : 태그 자신
+
+        var a = 1; //window에 선언된다.
+
+        function aaa(){
+            var a = 10; //지역변수
+            console.log(this);
+            
+            //전역변수에 접근할 수 있다. (window.a) 전역변수 a는 window에 만들어지므로..
+            console.log(this.a); 
+            console.log(a); //지역변수
+        }
+        aaa();
+
+        //이벤트에서의 this
+        var btn = document.getElementById("btn");
+        btn.addEventListener("click", function(){
+            console.log(this); //태그 자기자신
+        })
+
+    </script>
+    
+</body>
+</html> 

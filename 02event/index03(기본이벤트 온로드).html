@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>기본이벤트 온로드</title>
+</head>
+<body>
+
+    <!-- 화면 로딩이 완료된 이후에 실행 - onload는 화면별로 1개만 사용 할 수 있다. -->
+    <script>
+        window.onload = function(){
+            var a = document.getElementById("btn");
+            console.log(a);
+        }
+    </script>
+
+    <button id="btn">기본이벤트</button>
+    
+</body>
+</html>
