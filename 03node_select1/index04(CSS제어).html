@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS 제어</title>
+</head>
+<body>
+    
+    <ul class="box">
+        <li>목록1</li>
+        <li>목록2</li>
+        <li>목록3</li>
+    </ul>
+
+    <button id="btn">css속성변경하기</button>
+
+    <script>
+        // var lis = document.querySelector(".box li") //한줄만 바꾸기
+        var li = document.querySelectorAll(".box li")
+        var btn = document.getElementById("btn");
+
+        btn.onclick = function(){
+
+            // * 한줄만 바꾸기
+
+            // li의 style css & backgroundColor (하이픈 -> 카멜표기법)
+            // li.style.backgroundColor = "black";
+            // li.style.color = "darkorange";
+
+            // * 모든 li태그 다 바꾸기
+
+            for(var i in li){
+                li[i].style.backgroundColor = "black";
+                li[i].style.color = "darkorange";
+            }
+        }
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>노드생성</title>
+</head>
+<body>
+
+    <input type="text" class="todo" placeholder="할일을 작성해보3">
+    <button class="btn">추가</button>
+
+    <ul class="list">
+
+    </ul>
+
+    <script>
+        var todo = document.querySelector(".todo");
+        var btn = document.querySelector(".btn");
+
+        var list = document.querySelector(".list");
+        btn.onclick = function(){
+            var li = document.createElement("li");
+            var a = document.createElement("a");
+            a.href = "#";
+            a.innerHTML = todo.value;
+
+            li.appendChild(a);
+            list.appendChild(li);
+        }
+    </script>
+
+    <hr>
+
+    <div id="addList">
+
+    </div>
+    <button id="add">추가</button>
+
+    <script>
+        
+        window.onload = function(){
+            var addList = document.getElementById("addList");
+            var ul = document.createElement("ul");
+            for(var i = 1; i<= 10; i++){
+                var li = document.createElement("li");
+                li.innerHTML = "리스트" + i;
+
+                ul.appendChild(li);
+            }
+            addList.appendChild(ul);
+        }
+
+        var btn = document.getElementById("add");
+        btn.onclick = function(){
+            var li = document.createElement("li");
+            li.innerHTML = "추가된 리스트";
+
+            addList.querySelector("#addList > ul").appendChild(li);
+        }
+
+    </script>
+    
+</body>
+</html>

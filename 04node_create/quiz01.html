@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>실습</title>
+
+    <style>
+        table {border-spacing: 0; border-collapse: collapse;}
+        thead th, td {
+            border: 1px solid black;
+        }
+    </style>
+
+</head>
+<body>
+    <button type="button" id="addLists">5개추가하기</button>
+    <button type="button" id="addList">1개추가하기</button>
+    
+    <table>
+        <thead>
+			<tr>
+				<th>교시</th>
+				<th>훈련과목</th>
+				<th>담당자</th>
+				<th>훈련내용</th>
+			</tr>
+        </thead>
+        <tbody class="todoList">
+            <tr>
+                <td><input type="text" size="3"></td>
+                <td><input type="text"></td>
+                <td><input type="text" size="5"></td>
+                <td><input type="text"></td>
+            </tr>
+            <!-- 여기에 추가 -->
+        </tbody>
+    </table>
+
+    <script>
+
+        var btn1 = document.getElementById("addList");
+        var btn5 = document.getElementById("addLists");
+        var todoList = document.querySelector(".todoList");
+
+        //짧게 짜기 - 위의 tr구간 복사해서 붙여넣기 
+        btn1.onclick = function(){
+            var tr = document.querySelector(".todoList tr");
+            var a = tr.cloneNode(true);
+            todoList.appendChild(a);
+        }
+
+        btn5.onclick = function(){
+            for(var i = 1; i <= 5; i++){
+                var tr = document.querySelector(".todoList tr");
+                var a = tr.cloneNode(true);
+                todoList.appendChild(a);
+            }
+        }
+
+        // * 가장 간단한 방법
+        // btn1.onclick = function(){
+        //     line();
+        // }
+
+        // btn5.onclick = function(){
+        //     for(var i = 1; i <= 5; i++){
+        //         line();
+        //     }
+        // }
+
+        // function line(){
+        //     var tr = document.createElement("tr"); 
+        //     tr.innerHTML = '<td><input type="text" size="3"></td>'+
+        //         '<td><input type="text"></td>'+
+        //         '<td><input type="text" size="5"></td>'+
+        //         '<td><input type="text"></td>';
+
+        //     todoList.appendChild(tr);
+        // }
+
+        // * 조금 복잡한 방법
+        // btn1.onclick = function(){
+        //     //tr~tr생성하기
+        //     var tr = document.createElement("tr");
+            
+        //     for(var i = 1; i <= 4; i++){
+        //         var td = document.createElement("td");
+        //         var input = document.createElement("input");
+        //         input.type = "text";
+        //         if(i == 1){
+        //             input.size = "3";
+        //         }
+        //         if(i == 3){
+        //             input.size = "5";
+        //         }
+        //         td.appendChild(input);
+        //         tr.appendChild(td);
+        //     }
+            
+        //     //투두리스트에 tr추가
+        //     todoList.appendChild(tr);
+        // }
+
+        // btn5.onclick = function(){
+        //     for(var c = 1; c <= 5; c++){
+        //         //tr~tr생성하기
+        //         var tr = document.createElement("tr");
+                
+        //         for(var i = 1; i <= 4; i++){
+        //             var td = document.createElement("td");
+        //             var input = document.createElement("input");
+        //             input.type = "text";
+        //             if(i == 1){
+        //                 input.size = "3";
+        //             }
+        //             if(i == 3){
+        //                 input.size = "5";
+        //             }
+        //             td.appendChild(input);
+        //             tr.appendChild(td);
+        //         }
+                
+        //         //투두리스트에 tr추가
+        //         todoList.appendChild(tr);
+        //     }
+        // }
+    </script>
+
+</body>
+</html>
