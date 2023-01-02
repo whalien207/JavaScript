@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <h3>할일 목록 만들기</h3>
+
+        <h3 class="title" style="display:none;"></h3>
+
+        <div>
+            <input type="text" class="todoName" placeholder="이름">
+            <button type="button" class="todoBtn">확인</button>
+        </div>
+
+        <input type="text" class="todo" placeholder="할일">
+        <button type="button" class="addBtn">추가</button>
+        
+        <ul class="todoList">
+
+        </ul>
+
+    <script>
+        var title = document.querySelector(".title");
+        var todoName = document.querySelector(".todoName");
+        var todoBtn = document.querySelector(".todoBtn");
+        todoBtn.onclick = function(){
+            title.innerHTML = todoName.value + "님 환영합니다.";
+            title.style.display = "block";
+            todoName.style.display = "none";
+            todoBtn.style.display = "none";
+        }
+
+        var todo = document.querySelector(".todo");
+        var addBtn = document.querySelector(".addBtn");
+        var todoList = document.querySelector(".todoList");
+
+        addBtn.onclick = function(){
+            var li = document.createElement("li");
+            // li.innerHTML = todo.value + "<button onclick = 'remove(this);'>삭제</button>";
+            li.innerHTML = todo.value;
+            todo.value = "";
+
+            // 더블클릭버튼 만들기
+            var btn = document.createElement("button");
+            btn.innerHTML = "더블클릭삭제";
+            btn.ondblclick = remove;
+            li.appendChild(btn);
+
+            // 업버튼
+            var up = document.createElement("button");
+            up.innerHTML = "위이동";
+            up.onclick = up;
+            li.appendChild(up);
+
+            // 다운버튼
+            var down = document.createElement("button");
+            down.innerHTML = "아래이동";
+            down.onclick = down;
+            li.appendChild(down);
+
+            todoList.appendChild(li);
+        }
+
+        function remove(){
+            this.parentElement.remove();
+        }
+
+        // 위버튼
+        function up(){
+            var current = this.parentElement;
+            var prev = current.previousElementSibling;
+            list.insertBefore(current, prev);
+        }
+
+        // 아래버튼
+        function down(){
+            var current = this.parentElement;
+            var next = current.nextElementSibling;
+            list.insertBefore(next, current);
+        }
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>노드 삭제</title>
+
+    <style>
+        table {border-spacing: 0; border-collapse: collapse;}
+        thead th, tbody td {
+            border: 1px solid black;
+        }
+    </style>
+
+</head>
+<body>
+    
+	<button button="type" id="delOne">하나씩 삭제</button>
+    <button button="type" id="del">일괄 삭제</button>
+    <table>
+        <thead>
+            <th><input type="checkbox" class="allCheck"></th>
+            <th>번호</th>
+            <th>이름</th>
+            <th>내용</th>
+            <th>날짜</th>
+        </thead>
+
+        <tbody class="table">
+        <tr>
+            <td><input type="checkbox" class="check"></td>
+            <td>1</td>
+            <td>홍길자</td>
+            <td>안녕!</td>
+            <td>2019-01-01</td>
+        </tr>
+        <tr>
+            <td><input type="checkbox" class="check"></td>
+            <td>2</td>
+            <td>김길자</td>
+            <td>안녕!</td>
+            <td>2019-01-01</td>
+        </tr>
+        <tr>
+            <td><input type="checkbox" class="check"></td>
+            <td>3</td>
+            <td>이길자</td>
+            <td>안녕!</td>
+            <td>2019-01-01</td>
+        </tr>
+        <tr>
+            <td><input type="checkbox" class="check"></td>
+            <td>4</td>
+            <td>고길자</td>
+            <td>안녕!</td>
+            <td>2019-01-01</td>
+        </tr>
+
+        </tbody>
+
+        <script>
+            var delOne = document.getElementById("delOne");
+            delOne.onclick = function(){
+                var table = document.querySelector(".table");
+                // 위에서 부터 순서대로 하나씩 사라진다.
+                table.removeChild(table.firstElementChild);
+                // table.removeChild(table.children[0]); //배열
+            }
+
+            //일괄 삭제 remove
+            var del = document.getElementById("del");
+            var check = document.querySelectorAll(".check");
+            del.onclick = function(){
+                
+                if(confirm("삭제 할거니?") == false){
+                    // 취소 클릭시 false
+                    return;
+                }
+
+                for(var i in check){
+                    // 체크박스만 선택한 애들 삭제
+                    if(check[i].checked){
+                        check[i].parentElement.parentElement.remove();
+                    }
+                }
+            }
+
+            //상단 표의 체크 박스 체크시 모두 체크 체크 해제시 모두 체크 해제(체크박스 일괄처리)
+            var allcheck = document.querySelector(".allCheck");
+            allcheck.onchange = function(){
+                if(allcheck.checked){
+                    for(var i in check){
+                        check[i].checked = true;
+                    } 
+                }else{
+                    for(var i in check){
+                        check[i].checked = false;
+                    } 
+                }
+            }
+
+
+        </script>
+
+</body>
+</html>

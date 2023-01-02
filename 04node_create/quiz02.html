@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h4>step1</h4>
+    <h4>input은 지우는게 아니라 display를 제어하세요</h4>
+    <h4>할일 목록 만들기</h4>
+    <h4 class="msg"></h4>
+
+    <!-- 전체삭제하기 버튼 -->
+    <div style="margin: 20px 0;">
+        <button class="allDel">전체삭제하기</button>
+    </div>
+
+    <div class="hidden">
+        <input type="text" class="id" placeholder="닉네임 입력">
+        <button class="id_btn" placehoder>확인</button>
+    </div>
+    <div>
+        <input type="text" class="todo" placeholder="당신의 할일을 적으세요">
+        <button class="todo_btn">확인</button>
+    </div>
+
+    <ul class="list">
+
+    </ul>
+    
+
+    <script>
+
+        // id입력
+        var id_btn = document.querySelector(".id_btn");
+        var id = document.querySelector(".id");
+        var msg = document.querySelector(".msg");
+
+        id_btn.onclick = function(){
+            msg.innerHTML = id.value + "님 안녕하세요";
+
+            // hidden으로 숨기기
+            var hidden = document.querySelector(".hidden");
+            hidden.style.display = "none";
+        }
+
+
+        // 투두 리스트
+        var todo = document.querySelector(".todo");
+        var todo_btn = document.querySelector(".todo_btn");
+
+        var list = document.querySelector(".list");
+        todo_btn.onclick = function(){
+            var li = document.createElement("li");
+            var del = '<button ondblclick="del(this)">더블클릭삭제</button>';
+            var up = '<button onclick="up(this)">위이동</button>';
+            var down = '<button onclick="down(this)">아래이동</button>';
+
+            li.innerHTML = todo.value + del + up + down;
+            list.appendChild(li);
+
+            todo.value = null;
+        }
+
+        // 삭제버튼
+        function del(x){
+            x.parentElement.remove();
+        }
+
+        // 위버튼
+        function up(x){
+            var current = x.parentElement;
+            var prev = current.previousElementSibling;
+
+            if(confirm("이동하시겠습니까?")){
+                list.insertBefore(current, prev);
+            }
+        }
+
+        // 아래버튼
+        function down(x){
+            var current = x.parentElement;
+            var next = current.nextElementSibling;
+            
+            if(confirm("이동하시겠습니까?")){
+                list.insertBefore(next, current);
+            }
+        }
+        
+        // 전체삭제하기
+        var allDel = document.querySelector(".allDel");
+        allDel.onclick = function(){
+            var lis = document.querySelectorAll(".list > li");
+            for(var i in lis){
+                lis[i].remove();
+            }
+        }
+
+    </script>
+
+</body>
+</html>
