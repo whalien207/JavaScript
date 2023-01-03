@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <h3>이벤트 전파 특성 활용하기</h3>
+
+    <ul class="parent">
+        <li>1.홍길동</li>
+        <li>2.홍길자</li>
+        <li>3.이순신</li>
+        <li>4.강감찬</li>
+        <li>5.둘리</li>
+    </ul>
+
+    선택한 태그의 값:
+    <p class="result"></p>
+
+    <script>
+        var result = document.querySelector(".result");
+
+        // 부모에 이벤트를 걸면 자식한테 이벤트가 전파된다.
+        var parent = document.querySelector(".parent");
+        parent.onclick = function(e){
+            // console.log(this); //ul
+            // result.innerHTML = this.innerHTML; //ul
+
+            // 이벤트 객체 - 이벤트 함수의 첫번째 매개변수에 자동으로 전달된다.
+            // console.log(e); //매개변수로 받아서 사용
+            // console.log(event); //직접 event로 사용
+
+            // 차이점 잘 비교해두기
+            // console.log(event.target); //이벤트가 실행된 실제 태그 - 실제로 3번 이순신을 클릭했다면 이순신의 li태그가 나온다.
+            // console.log(event.currentTarget); //이벤트가 실제로 걸려있는 위치 - 이벤트는 ul태그에 걸려있으므로 ul태그 밑으로 전부 나온다.
+
+
+            if(e.target.tagName != "UL"){
+                result.innerHTML = event.target.innerHTML;
+            }
+
+        }
+    </script>
+
+
+</body>
+</html>
