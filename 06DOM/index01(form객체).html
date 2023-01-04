@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <form action="#" name="actionForm">
+        <h3>가입창</h3>
+        이름: <input type="text" name="name"><br>
+        번호: <input type="text" name="phone" onclick="phoneFunc(event)"><br>
+        분야: 
+        <input type="checkbox" name="check">CSS
+        <input type="checkbox" name="check">JS
+        <input type="checkbox" name="check">HTML
+
+        <input type="submit" value="submit">
+    </form>
+
+    <script>
+        /*
+        1.form태그는 document의 자식이라서 form의 document.폼명으로 접근이 가능하다.
+        2. input은 form의 자식이라서 document.폼명.태그name으로 접근이 가능하다.
+        */
+
+        // console.log(document.actionForm);
+        // console.log(document.actionForm.name);
+        // console.log(document.actionForm.phone);
+
+        var submit = document.querySelector("input[type='submit']");
+        submit.onclick = function(){
+            event.preventDefault();//서브밋의 고유 이벤트 제거
+            // console.log(1);
+            if(document.actionForm.name.value.length <= 0){
+                alert("이름은 필수입니다");
+                document.actionForm.name.focus();
+                return;
+            } else if(document.actionForm.phone.value.length != 11){
+                alert("번호는 -없이 11자로 입력부탁");
+                document.actionForm.phone.focus();
+                return;
+            } else { //체크박스 검사
+                // var check = document.querySelectorAll("input[name='check']");
+                // var check = document.getElementsByName("check");
+                var check = document.actionForm.check;
+                console.log(check);
+                var cnt = 0;
+
+                for(var i in check){
+                    if(check[i].checked){
+                        cnt++;
+                    }
+                }
+
+                if(cnt == 0){
+                    alert("적어도 한 분야는 선택부탁");
+                    return;
+                }
+            }
+
+            document.actionForm.submit();
+        }
+
+        function phoneFunc(e){
+            e.target.value = e.target.value.replaceAll("-", "");
+        }
+    </script>
+
+</body>
+</html>

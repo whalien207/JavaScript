@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>clearTimeout</title>
+</head>
+<body>
+
+    <button class="stop">중지</button>
+
+    <script>
+        //window생략가능 5초뒤에 동작
+        var print = setTimeout(function(){
+            alert("5초후 출력됨");
+        }, 5000);
+
+        var stop = document.querySelector(".stop");
+        stop.onclick = function(){
+            clearTimeout(print);
+        }
+    </script>
+    
+</body>
+</html> 

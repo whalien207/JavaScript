@@ -17,7 +17,24 @@
         }
 
         .toggle-menu {display: none;}
-        .active { display: block; }
+        .active { display: block; animation: fadeIn 0.5s ease-in-out; }
+
+        /* 애니메이션 */
+        /* 라이브러리 사이트 : https://michalsnik.github.io/aos/ */
+
+        @keyframes fadeIn {
+            from{
+                opacity: 0;
+                background-color: black;
+                margin-left: -100px;
+            }
+            to{
+                opacity: 1;
+                background-color: darkorange;
+                margin-left: 0;
+            }
+        }
+
     </style>
 
 </head>
@@ -53,6 +70,8 @@
         var toggle = document.querySelector(".toggle");
         
         toggle.onclick = function(){
+            if(event.target.tagName != "LI") return;
+
             // 현재 active 설정되어있는 태그를 가지고 와서 active삭제
             var active = document.querySelector(".active");
             active.classList.remove("active");
