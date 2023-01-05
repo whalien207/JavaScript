@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <H5>1번 페이지에서 만든 쿠키를 사용할 거임🍪</H5>
+
+    <input type="text" id="findCookie">
+    <button id="btn">찾을쿠키명</button>
+
+    <script>
+        //document.cookie자체가 문자열이다. ;로 분리 -> =으로 분리 -> 키와 값을 뽑아서 사용
+        console.log(document.cookie);
+
+        var findCookie = document.getElementById("findCookie");
+        var btn = document.getElementById("btn");
+        btn.onclick = function(){
+            var cookies = document.cookie.split("; ");
+            console.log(cookies);
+
+            //반복을 이용해서
+            for(var i in cookies){
+                if(cookies[i].indexOf(findCookie.value) != -1){
+                    var value = cookies[i].replaceAll(" ", "").replace(find+"=", "");//값
+                    console.log("값:"+value);
+                }
+            }
+
+        }
+    </script>
+    
+</body>
+</html>

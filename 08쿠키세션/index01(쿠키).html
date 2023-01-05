@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    쿠키이름: <input type="text" id="cookieName">
+    쿠키벨류: <input type="text" id="cookieValue">
+
+    <button id="btn">쿠키만들기🍪</button>
+
+    <script>
+        // document.cookie = "키=값;";
+        // document.cookie = "키=값; expires=UTC스트링시간타입;"; 
+
+        // var date = new Date();
+        // date.setMinutes(date.getMinutes()+1); //지금시간으로부터 1분뒤
+
+        // console.log(date);
+        // document.cookie = "키=값; path=/; expires="+date.toUTCString(); 
+
+        var cookieName = document.getElementById("cookieName");
+        var cookieValue = document.getElementById("cookieValue");
+
+        var btn = document.getElementById("btn");
+        btn.onclick = function(){
+            var date = new Date();
+            date.setHours(date.getHours()+1); //지금시간으로부터 1분뒤
+
+            var key = cookieName.value;
+            var value = cookieValue.value;
+
+            var cookie = "";
+            cookie += key + "=" + value + ";";
+            cookie += "path=/;";
+            cookie += "expires=" + date.toUTCString();
+
+            console.log(cookie);
+            document.cookie = cookie;
+        }
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>네이버타이머</title>
+</head>
+<body>
+
+    <h5>네이버 타이머 도전하기</h5>
+    <form>
+        <p>조건</p>
+        <p>1.select 태그는 시간 : 99 or 분:60 or 초:60으로 화면이 생성될 떄 엘리먼트 생성기법으로 처리한다.</p>
+        <p>2. 시간 설정 버튼을 클릭하면 시간이 셋팅된다.</p>
+        <p>3. 타이머시작버튼은 토글형태로 타이머가 동작중이라면 일시정지 버튼으로 활성화됩니다.</p>
+        <p>4. 사용자가 버튼을 잘못클릭하는 경우를 고려하여, 어떠한 경우라도 중복으로 타이밍이 발생되면 안됩니다.</p>
+    </form>
+
+    <h5>시간을 선택하세요</h5>
+
+    <div class="timer">
+        <select class="hour">
+        </select>
+
+        <select class="min">
+        </select>
+
+        <select class="sec">
+        </select>
+
+        <button type="button" class="timeSetBtn">시간설정</button>
+        <button type="button" class="startBtn">타이머시작</button>
+    </div>
+
+    <h3 class="timeSet"></h3>
+
+
+
+    <script>
+        // 화면에 시간,분,초 option태그 셋팅
+        var hour = document.querySelector(".hour");
+        for(var i = 0; i <= 99; i++){
+            hour.innerHTML += '<option value="hour">'+ i +'</option>';
+
+            // 엘리먼트생성기법
+            /*
+            var option = document.createElement("option");
+            option.value = "hour";
+            option.innerHTML = i;
+
+            hour.appendChild(option);
+            */
+        }
+
+        var min = document.querySelector(".min");
+        for(var i = 0; i <= 60; i++){
+            min.innerHTML += '<option value="min">'+ i +'</option>';
+        }
+
+        var sec = document.querySelector(".sec");
+        for(var i = 0; i <= 60; i++){
+            sec.innerHTML += '<option value="sec">'+ i +'</option>';
+        }
+
+        // 시간설정 버튼 클릭시 화면에 띄워주기
+        var timeSetBtn = document.querySelector(".timeSetBtn");
+        var timeSet = document.querySelector(".timeSet");
+
+        var h = 0;
+        var m = 0;
+        var s = 0;
+
+        timeSetBtn.onclick = function(){
+            // 선택한 option값 가지고 오기
+            // console.log(hour.options[hour.selectedIndex].text);
+
+            h = hour.options[hour.selectedIndex].text;
+            m = min.options[min.selectedIndex].text;
+            s = sec.options[sec.selectedIndex].text;
+
+            timeSet.innerHTML = h+":"+m+":"+s;
+        }
+
+        // 타이머 시작 버튼 클릭시 타이머 동작
+        var startBtn = document.querySelector(".startBtn");
+        startBtn.onclick = function(){
+            var timer = window.setInterval(function(){
+
+                //모든 시간이 0이 되었을 때 타이머 종료
+                if(h == 0 && m == 0 && s == 0){
+                    alert("타이머 종료");
+                    window.clearInterval(timer)
+                    location.reload();
+                }
+
+                //시간이 0이상이고 m과 s가 0이하일때 시간을 -해주고 분과 초에 대한 처리로 넘어간다.
+                if(h > 0 && m <= 0 && s <= 1){
+                    m = 60;
+                    h -= 1;
+                    timeSet.innerHTML = h+":"+m+":"+s;
+                }
+
+                // 초와 분에 대한 처리
+                if(m > 0 && s <= 1){
+                    s = 60;
+                    m -= 1;
+                    timeSet.innerHTML = h+":"+m+":"+s;
+                }else{
+                    s -= 1;
+                    timeSet.innerHTML = h+":"+m+":"+s;
+                }
+            }, 1000 );//실행시킬 함수, 인터벌
+        }
+    </script>
+
+</body>
+</html>
