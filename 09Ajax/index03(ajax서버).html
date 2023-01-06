@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <ul class="pageNation">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+    </ul>
+
+    <!-- open API 활용 가이드를 꼭 읽고 진행하기를 바란다. -->
+    <script>
+        var page = document.querySelector(".pageNation");
+        page.onclick = function(){
+            if(event.target.tagName != "LI") return;
+            //데이터호출 - 사용자가 클릭한 페이지 번호
+            ajax(event.target.innerHTML);
+        }
+
+        var key = "GK4%2F2RywBsY2cL%2BCgYOMp89rm5NFYGyfQoSsoajiFYTODUDl0zWmoYRTU1pF0ZdkB7b%2BMRsZS5KlLmpx0QYXQQ%3D%3D";
+        // var page = 1;
+
+        function ajax(page){
+            fetch("http://apis.data.go.kr/1360000/TourStnInfoService/getTourStnVilageFcst?ServiceKey="+key+"&pageNo="+page+"&numOfRows=10&dataType=JSON&CURRENT_DATE=20230106&HOUR=24&COURSE_ID=1").then(function(res){
+                // console.log(res.json());
+                return res.json();
+            }).then(function(data){
+                var arr = data.response.body.items.item;
+                for(var i = 0; i < arr.length; i++){
+                console.log(arr[i]);
+                }
+            });
+        }
+        
+        (function(){
+            ajax(1);
+        })
+
+    </script>
+    
+</body>
+</html>

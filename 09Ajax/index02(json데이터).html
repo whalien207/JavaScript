@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <button onclick="ajax()">json파일  ajax요청</button>
+    <div class="result">
+    </div>
+    
+    <script>
+
+        function ajax(){
+            fetch("hi.json").then(function(res){
+                return res.json(); //json형변환
+            }).then(function(data){
+                console.log(data);
+
+                //json data의 원하는 key값으로 원하는 value 뽑아오기
+                // console.log(data.id);
+                // console.log(data["id"]);
+
+                //data의 값을 화면에 써주기처리
+                var result = document.querySelector(".result");
+                result.innerHTML = data["id"];
+            });
+ 
+        }
+    </script>
+
+    <button onclick="ajax2()">xml데이터 ajax요청</button>
+    <script>
+        function ajax2(){
+            fetch("hi.xml").then(function(res){
+               return res.text();
+            }).then(function(data){
+                //xml -> string으로 변환
+                var result = new DOMParser().parseFromString(data, 'text/xml');
+                // return result;
+                var arr = result.querySelectorAll("datas > data");
+                for(var i in arr){
+                    console.log(arr[i]);
+                    console.log(arr[i].querySelector("name"));
+                    console.log(arr[i].querySelector("version"));
+                    console.log(arr[i].querySelector("price"));
+                }
+                
+            });
+        }    
+    </script>
+
+</body>
+</html>
